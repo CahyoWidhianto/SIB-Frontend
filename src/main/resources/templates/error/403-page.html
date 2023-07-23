@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>403</title>
+</head>
+
+<body>
+    <main layout:fragment="main">
+        <div class="container">
+
+            <section class="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center">
+                <img src="/assets/img/403.svg" class="img-fluid py-5" alt="Page Not Found">
+                <a class="btn" onclick="goBack()">Back to home</a>
+            </section>
+
+        </div>
+    </main>
+
+</body>
+
+</html>

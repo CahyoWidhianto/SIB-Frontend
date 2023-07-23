@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/admin}">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Create Employee</title>
+</head>
+
+<body>
+    <main id="main" class="main" layout:fragment="main">
+        <section class="section">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Create Employee</h5>
+
+                            <!-- No Labels Form -->
+                            <form id="create" class="row g-3" th:action="@{/employee/{id} (id=${employee.id})}"
+                                th:method="POST" th:object="${employee}">
+                                <div class="col-md-12">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" th:field="*{name}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control" th:field="*{email}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone">Phone</label>
+                                    <input type="text" class="form-control" th:field="*{phone}">
+                                </div>
+                                <div class="text-center">
+                                    <a th:href="@{/employee}" class="btn btn-secondary">Back</a>
+                                    <button type="submit" class="btn btn-primary">submit</button>
+                                </div>
+                            </form><!-- End No Labels Form -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div layout:fragment="script">
+        <script>
+            document.getElementById('create').addEventListener('submit', function (event) {
+                event.preventDefault(); // Mencegah form dari pengiriman default
+
+                Swal.fire({
+                    title: 'Sukses!',
+                    text: 'Data berhasil disimpan.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(function (result) {
+                    if (result.isConfirmed) {
+                        // Form akan disubmit setelah menutup SweetAlert
+                        event.target.submit();
+                    }
+                });
+            });
+        </script>
+    </div>
+</body>
+
+</html>
